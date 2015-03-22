@@ -1,3 +1,5 @@
+var util = require('util')
+
 var ractive = require('ractive')
   , test = require('tape')
   , rcu = require('rcu')
@@ -78,4 +80,15 @@ test('emits error for parse error', function(t) {
 
   stream.write(template)
   stream.end()
+})
+
+test('makeOutput outputs valid JS', function(t) {
+  t.plan(1)
+
+  t.equal(
+      makeOutput({a: 'b'})
+    , util.format('module.exports = %s', JSON.stringify({a: 'b'}, null, 2))
+  )
+
+  t.end()
 })
