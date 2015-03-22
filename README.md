@@ -3,7 +3,7 @@
 [![Build Status](http://img.shields.io/travis/jarofghosts/ractive-browserify.svg?style=flat)](https://travis-ci.org/jarofghosts/ractive-browserify)
 [![npm install](http://img.shields.io/npm/dm/ractive-browserify.svg?style=flat)](https://www.npmjs.org/package/ractive-browserify)
 
-browserify transform for Ractive
+Browserify transform for Ractive
 
 ## usage
 
