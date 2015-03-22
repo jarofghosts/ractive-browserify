@@ -1,0 +1,38 @@
+{
+  "name": "ractive-browserify",
+  "version": "0.7.0",
+  "description": "ractive template browserify transform",
+  "main": "index.js",
+  "scripts": {
+    "test": "covert test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jarofghosts/ractive-browserify.git"
+  },
+  "keywords": [
+    "ractive",
+    "browserify",
+    "template",
+    "parse",
+    "transform"
+  ],
+  "author": "jesse keane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/ractive-browserify/issues"
+  },
+  "homepage": "https://github.com/jarofghosts/ractive-browserify",
+  "dependencies": {
+    "concat-stream": "^1.4.7",
+    "duplexify": "^3.2.0",
+    "ractive": "^0.7.1",
+    "rcu": "^0.4.0",
+    "through2": "^0.6.3",
+    "xtend": "^4.0.0"
+  },
+  "devDependencies": {
+    "covert": "^1.0.1",
+    "tape": "^3.5.0"
+  }
+}
