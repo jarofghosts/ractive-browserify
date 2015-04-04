@@ -68,13 +68,14 @@ test('only exports template if specified', function(t) {
   stream.end()
 })
 
-test('emits error for parse error', function(t) {
-  t.plan(1)
+test('emits error for parse error with filename', function(t) {
+  t.plan(2)
 
   var stream = transform('filename.ract')
   var template = 'oh, {{#if}}herp!'
 
   stream.on('error', function(err) {
+    t.ok(/^filename\.ract/.test(err.message))
     t.ok(err)
   })
 

@@ -1,4 +1,5 @@
 var path = require('path')
+  , util = require('util')
 
 var concat = require('concat-stream')
   , duplex = require('duplexify')
@@ -29,6 +30,8 @@ function transform(file, _opts) {
     try {
       component = rcu.parse(buf.toString())
     } catch(err) {
+      err.message = util.format('%s\n%s', file, err.message)
+
       return output.emit('error', err)
     }
 
