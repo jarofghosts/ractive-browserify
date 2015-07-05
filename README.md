@@ -1,7 +1,9 @@
 # ractive-browserify
 
-[![Build Status](http://img.shields.io/travis/jarofghosts/ractive-browserify.svg?style=flat)](https://travis-ci.org/jarofghosts/ractive-browserify)
-[![npm install](http://img.shields.io/npm/dm/ractive-browserify.svg?style=flat)](https://www.npmjs.org/package/ractive-browserify)
+[![Build Status](https://img.shields.io/travis/jarofghosts/ractive-browserify.svg?style=flat-square)](https://travis-ci.org/jarofghosts/ractive-browserify)
+[![npm install](https://img.shields.io/npm/dm/ractive-browserify.svg?style=flat-square)](https://www.npmjs.org/package/ractive-browserify)
+[![npm version](https://img.shields.io/npm/v/ractive-browserify.svg?style=flat-square)](https://www.npmjs.org/package/ractive-browserify)
+[![License](https://img.shields.io/npm/l/ractive-browserify.svg?style=flat-square)](https://github.com/jarofghosts/ractive-browserify/blob/master/LICENSE)
 
 Browserify transform for Ractive
 
