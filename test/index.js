@@ -1,20 +1,17 @@
 var util = require('util')
 
 var ractive = require('ractive')
-  , test = require('tape')
-  , rcu = require('rcu')
+var test = require('tape')
 
 var makeOutput = require('../lib/make-output')
-  , transform = require('../')
+var transform = require('../')
 
-rcu.init(ractive)
-
-test('if filename extension not .ract, pass through', function(t) {
+test('if filename extension not .ract, pass through', function (t) {
   t.plan(1)
 
   var stream = transform('filename.xlsx')
 
-  stream.on('data', function(data) {
+  stream.on('data', function (data) {
     t.equal(data.toString(), 'oh, {{hi}}!')
     t.end()
   })
@@ -23,14 +20,14 @@ test('if filename extension not .ract, pass through', function(t) {
   stream.end()
 })
 
-test('if extension is .ract, parse it', function(t) {
+test('if extension is .ract, parse it', function (t) {
   t.plan(1)
 
   var stream = transform('filename.ract')
   var template = 'oh, {{hi}}!'
 
-  stream.on('data', function(data) {
-    t.equal(data.toString(), makeOutput(rcu.parse(template)))
+  stream.on('data', function (data) {
+    t.equal(data.toString(), makeOutput(ractive.parse(template)))
     t.end()
   })
 
@@ -38,14 +35,14 @@ test('if extension is .ract, parse it', function(t) {
   stream.end()
 })
 
-test('extension is configurable', function(t) {
+test('extension is configurable', function (t) {
   t.plan(1)
 
   var stream = transform('filename.xlsx', {extension: 'xlsx'})
   var template = 'oh, {{hi}}!'
 
-  stream.on('data', function(data) {
-    t.equal(data.toString(), makeOutput(rcu.parse(template)))
+  stream.on('data', function (data) {
+    t.equal(data.toString(), makeOutput(ractive.parse(template)))
     t.end()
   })
 
@@ -53,28 +50,13 @@ test('extension is configurable', function(t) {
   stream.end()
 })
 
-test('only exports template if specified', function(t) {
-  t.plan(1)
-
-  var stream = transform('filename.ract', {justTemplate: true})
-  var template = 'oh, {{hi}}!'
-
-  stream.on('data', function(data) {
-    t.equal(data.toString(), makeOutput(rcu.parse(template).template))
-    t.end()
-  })
-
-  stream.write(template)
-  stream.end()
-})
-
-test('emits error for parse error with filename', function(t) {
+test('emits error for parse error with filename', function (t) {
   t.plan(2)
 
   var stream = transform('filename.ract')
   var template = 'oh, {{#if}}herp!'
 
-  stream.on('error', function(err) {
+  stream.on('error', function (err) {
     t.ok(/^filename\.ract/.test(err.message))
     t.ok(err)
   })
@@ -83,7 +65,7 @@ test('emits error for parse error with filename', function(t) {
   stream.end()
 })
 
-test('makeOutput outputs valid JS', function(t) {
+test('makeOutput outputs valid JS', function (t) {
   t.plan(1)
 
   t.equal(

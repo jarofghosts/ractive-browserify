@@ -1,41 +1,37 @@
 var path = require('path')
-  , util = require('util')
 
 var concat = require('concat-stream')
-  , duplex = require('duplexify')
-  , through = require('through2')
-  , ractive = require('ractive')
-  , extend = require('xtend')
-  , rcu = require('rcu')
+var duplex = require('duplexify')
+var through = require('through2')
+var ractive = require('ractive')
+var extend = require('xtend')
 
 var makeOutput = require('./lib/make-output')
 
-rcu.init(ractive)
-
 module.exports = transform
 
-function transform(file, _opts) {
+function transform (file, _opts) {
   var opts = extend({extension: 'ract'}, _opts)
   var output = through()
 
-  if(path.extname(file).slice(1) !== opts.extension) {
+  if (path.extname(file).slice(1) !== opts.extension) {
     return output
   }
 
   return duplex(concat(parseTemplate), output)
 
-  function parseTemplate(buf) {
+  function parseTemplate (buf) {
     var component
 
     try {
-      component = rcu.parse(buf.toString())
-    } catch(err) {
-      err.message = util.format('%s\n%s', file, err.message)
+      component = ractive.parse(buf.toString())
+    } catch (err) {
+      err.message = file + '\n' + err.message
 
       return output.emit('error', err)
     }
 
-    output.push(makeOutput(opts.justTemplate ? component.template : component))
+    output.push(makeOutput(component))
     output.push(null)
   }
 }

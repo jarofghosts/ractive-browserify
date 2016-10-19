@@ -14,7 +14,7 @@ Alternatively, specify your own extension via the `extension` option:
 
 ```js
 "transform": [
-    ["ractive-browserify", {"extension": "html", "justTemplate": true}]
+    ["ractive-browserify", {"extension": "html"}]
 ]
 ```
 
@@ -22,8 +22,12 @@ Alternatively, specify your own extension via the `extension` option:
 
 * `extension` - A string specifying what file extension to parse. Defaults to
   `"ract"`
-* `justTemplate` - A boolean that, if true, will only export the `template`
-  property of the parsed file. Defaults to `false`.
+
+#### notes
+
+Previous versions supported a `justTemplate` option, but newer Ractive parsing
+methods only output the template so it has been removed until otherwise
+necessary/supported.
 
 ## why
 
