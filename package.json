@@ -1,6 +1,6 @@
 {
   "name": "ractive-browserify",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "ractive template browserify transform",
   "main": "index.js",
   "scripts": {
